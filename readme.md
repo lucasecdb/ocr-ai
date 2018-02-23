@@ -20,7 +20,7 @@ Ai, em seguida, é so ativar o ambiente e instalar as dependências.
 
 ```bash
 source env/bin/activate
-pip install -R requirements.txt
+pip install -r requirements.txt
 ```
 
 Baixa os dados que a gente vai usar como o conjunto de treinamento e de testes executando o script.
