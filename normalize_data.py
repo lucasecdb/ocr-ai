@@ -6,6 +6,8 @@ from skimage.transform import resize
 
 out_dir = './data/normalized'
 
+os.mkdir(out_dir)
+
 MEDIAN_HEIGHT = 87
 MEDIAN_WIDTH = 62
 
