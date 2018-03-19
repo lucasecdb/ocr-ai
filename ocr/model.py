@@ -17,9 +17,9 @@ class Agent(object):
         self._svc.fit(self._train_data, self._train_labels)
 
     def test(self):
-        return self._svc.score(test_data, test_labels)
+        return self._svc.score(self._test_data, self._test_labels)
 
     def generate_report(self):
-        predictions = self._svc.predict(test_data)
+        predictions = self._svc.predict(self._test_data)
 
-        print(classification_report(test_labels, predictions))
+        print(classification_report(self._test_labels, predictions))

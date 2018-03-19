@@ -4,7 +4,7 @@ agent = None
 
 print('Carregando o classificador')
 
-with open('./agent.pkl', 'r') as file:
+with open('./agent.pkl', 'rb') as file:
     agent = pickle.load(file)
 
 print('DONE.\n')
