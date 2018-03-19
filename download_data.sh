@@ -28,7 +28,30 @@ rmdir English
 
 pushd data &> /dev/null
 
-rm -rf BadImag/
+pushd BadImag &> /dev/null
+
+rm -rf Msk/
+
+pushd Bmp &> /dev/null
+
+for d in */; do
+    mv $d/* .
+    rmdir $d
+done
+
+for f in *; do
+    mv $f "BadImag-$f"
+done
+
+popd &> /dev/null
+
+find Bmp -name '*.*' -exec mv {} ../ \;
+
+rmdir Bmp/
+
+popd &> /dev/null
+
+rmdir BadImag/
 
 pushd GoodImg &> /dev/null
 
@@ -41,9 +64,13 @@ for d in */; do
     rmdir $d
 done
 
+for f in *; do
+    mv $f "GoodImg-$f"
+done
+
 popd &> /dev/null
 
-mv Bmp/* ../
+find Bmp -name '*.*' -exec mv {} ../ \;
 
 rmdir Bmp/
 
