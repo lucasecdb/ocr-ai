@@ -9,9 +9,12 @@ with open('./agent.pkl', 'rb') as file:
 
 print('DONE.\n')
 
-print('Testando o classificador')
+print('Predizendo os dados de teste e gerando métricas...')
 
-print(agent.test())
+result = agent.test()
+
 print(agent.generate_report())
+
+print('Accuracy: ' + result.astype(str))
 
 print('DONE.\n')

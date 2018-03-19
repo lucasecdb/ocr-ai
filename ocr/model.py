@@ -1,4 +1,5 @@
 from sklearn.svm import SVC
+from sklearn.metrics import classification_report
 
 
 class Agent(object):
@@ -7,7 +8,7 @@ class Agent(object):
     '''
 
     def __init__(self, train_data, test_data, train_labels, test_labels):
-        self._svc = SVC(C=32, gamma=0.0078125)
+        self._svc = SVC(C=32, gamma=0.0078125, kernel='poly')
         self._train_data = train_data
         self._train_labels = train_labels
         self._test_data = test_data
