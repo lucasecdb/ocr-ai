@@ -14,7 +14,13 @@ with open(out_file, 'w') as dataset_file:
                 print(file)
             label = label.group(1)
             image = imread(os.path.join(path, file))
-            image_hog = hog(image, block_norm='L2-Hys')
+            image_hog = hog(
+                image, 
+                orientations=4, 
+                block_norm='L2', 
+                pixels_per_cell=(4, 4), 
+                cells_per_block=(2, 2)
+            )
 
             line = label + ' ' + \
                 ' '.join(['%d:%.7f' % (i + 1, image_hog[i])
