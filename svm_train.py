@@ -1,15 +1,12 @@
 import os
 import re
-
-from skimage.io import imread
-from skimage.feature import hog
-from sklearn.model_selection import train_test_split, GridSearchCV, RandomizedSearchCV
-
-from sklearn import svm
-
+import pickle
 import numpy as np
 
-###### Leitura dos dados de treino e respectivas labels ######
+from ocr.model import Agent
+from skimage.io import imread
+from skimage.feature import hog
+from sklearn.model_selection import train_test_split
 
 data_labels = []
 hog_features = []
@@ -32,16 +29,12 @@ train_data, test_data, train_labels, test_labels = train_test_split(
 
 print('DONE.\n')
 
-print('Treinando o classificador SVC...')
+print('Treinando e salvando o classificador SVC...')
 
-svc = svm.SVC(C=32, gamma=0.0078125)
-agent = svc.fit(train_data, train_labels)
+agent = Agent(train_data, test_data, train_labels, test_labels)
+agent.train()
+
+with open('./agent.pkl', 'wb') as file:
+    pickle.dump(agent, file)
 
 print('DONE.\n')
-
-print('Predizendo os dados de teste...')
-
-result = agent.score(test_data, test_labels)
-print(result)
-
-print('FIM.')
