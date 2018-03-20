@@ -5,7 +5,7 @@ from sklearn.metrics import classification_report
 
 class Agent(object):
     '''
-    Represents the SVM agent object
+    Represents the SVM and MLP agent object
     '''
 
     def __init__(self, train_data, test_data, train_labels, test_labels, mode='svc'):
