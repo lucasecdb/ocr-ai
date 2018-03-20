@@ -1,4 +1,5 @@
 from sklearn.svm import SVC
+from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import classification_report
 
 
@@ -7,8 +8,11 @@ class Agent(object):
     Represents the SVM agent object
     '''
 
-    def __init__(self, train_data, test_data, train_labels, test_labels):
-        self._svc = SVC(C=32, gamma=0.0078125, kernel='poly')
+    def __init__(self, train_data, test_data, train_labels, test_labels, mode='svc'):
+        if mode == 'mlp':
+            self._svc = MLPClassifier(hidden_layer_sizes = (50,50,50), max_iter=500)
+        else:
+            self._svc = SVC(C=32, gamma=0.0078125, kernel='poly')
         self._train_data = train_data
         self._train_labels = train_labels
         self._test_data = test_data
