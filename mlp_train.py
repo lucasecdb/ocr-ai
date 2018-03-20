@@ -21,6 +21,7 @@ print('Efetuando a leitura dos dados e tratando imagens...')
 for path, dir, files in os.walk('./data/normalized'):
     for file in files:
         label = re.search('0+(.+?)-', file)
+        # features = imread(os.path.join(path, file))
         features = hog(image=imread(os.path.join(path, file)), orientations=4,
                        block_norm='L2', pixels_per_cell=(4, 4), cells_per_block=(2, 2))
         # Descomente para plotar as imagens
@@ -34,6 +35,7 @@ for path, dir, files in os.walk('./data/normalized'):
             data_labels.append(label.group(1))
 
 data = np.array(hog_features)
+data = data.reshape(len(data), -1)
 print('DONE.\n')
 
 print('Repartindo os dados em dados de treino e dados de teste 70/30')
