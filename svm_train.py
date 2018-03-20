@@ -7,10 +7,10 @@ from ocr.model import Agent
 from skimage.io import imread
 from skimage.feature import hog
 from sklearn.model_selection import train_test_split
-from matplotlib import pyplot as plt
-from matplotlib import interactive
+# from matplotlib import pyplot as plt
+# from matplotlib import interactive
 
-interactive(True)
+# interactive(True)
 
 data_labels = []
 hog_features = []
